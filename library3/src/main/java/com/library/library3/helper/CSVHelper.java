@@ -33,9 +33,6 @@ public class CSVHelper {
                         csvRecord.get(3),
                         publisher
                 );
-                author.addBook(book);
-                publisher.addBook(book);
-                books.add(book);
             }
             return books;
         } catch (IOException e) {
