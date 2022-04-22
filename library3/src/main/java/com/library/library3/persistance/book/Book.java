@@ -28,11 +28,12 @@ public class Book extends AbstractEntity {
     private Publisher publisher;
 
 
-    public Book() {
+    protected Book() {
+        super();
     }
 
-    public Book( Author author, String genre, String subGenre, String height, Publisher publisher) {
-
+    public Book(Author author, String genre, String subGenre, String height, Publisher publisher) {
+        super();
         this.author = author;
         this.genre = genre;
         this.subGenre = subGenre;

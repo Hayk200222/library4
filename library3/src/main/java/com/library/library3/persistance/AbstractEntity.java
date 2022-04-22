@@ -19,6 +19,11 @@ public abstract class AbstractEntity {
     private LocalDateTime updatedOn;
 
     public AbstractEntity() {
+        super();
+    }
+
+    @PrePersist
+    public void onCreate() {
         this.createdOn = LocalDateTime.now();
     }
 
@@ -26,6 +31,11 @@ public abstract class AbstractEntity {
     public void onUpdate() {
         this.updatedOn = LocalDateTime.now();
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public Long getId() {
         return id;

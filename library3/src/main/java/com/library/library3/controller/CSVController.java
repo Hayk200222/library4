@@ -19,15 +19,20 @@ public class CSVController {
     @Autowired
     CSVService fileService;
 
-    @PostMapping("/upload")
+    @PostMapping(
+            value = "/upload",
+            consumes = "multipart/form-data",
+            produces = "application/json"
+    )
     public ResponseEntity<ResponseMessage> upload(@RequestParam(name = "file") MultipartFile file) {
         String message = "";
+
         try {
-            fileService.save(file);
+            fileService.saveBooks(file);
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
         } catch (Exception e) {
-            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+            message = "ERROR: " + e.getMessage();
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
         }
     }
