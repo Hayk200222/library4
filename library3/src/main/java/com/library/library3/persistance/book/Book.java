@@ -27,13 +27,11 @@ public class Book extends AbstractEntity {
     @JoinColumn(name = "publisher_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_books_publisher_id"))
     private Publisher publisher;
 
+    public Book(){
 
-    protected Book() {
-        super();
     }
 
     public Book(Author author, String genre, String subGenre, String height, Publisher publisher) {
-        super();
         this.author = author;
         this.genre = genre;
         this.subGenre = subGenre;
