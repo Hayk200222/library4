@@ -24,15 +24,14 @@ public class CSVHelper {
             List<Book> books = new ArrayList<>();
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
             for (CSVRecord csvRecord : csvRecords) {
-                Author author = new Author(csvRecord.get(0));
-                Publisher publisher = new Publisher(csvRecord.get(4));
                 Book book = new Book(
-                        author,
+                        new Author(csvRecord.get(0)),
                         csvRecord.get(1),
                         csvRecord.get(2),
                         csvRecord.get(3),
-                        publisher
+                        new Publisher(csvRecord.get(4))
                 );
+                books.add(book);
             }
             return books;
         } catch (IOException e) {
